@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>{{ title }} · PeopleDesk</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+  <script defer src="{{ url_for('static', path='/js/app.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</head>
+<body data-page="{{ page }}" data-protected="{{ 'true' if protected else 'false' }}">
+  {% if page != 'login' %}
+  <header class="topbar">
+    <a class="brand" href="/dashboard" aria-label="PeopleDesk dashboard">
+      <span class="brand-mark">P</span><span>PeopleDesk</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="{% if page == 'dashboard' %}active{% endif %}" href="/dashboard">Dashboard</a>
+      <a class="{% if page == 'projects' %}active{% endif %}" href="/ui/projects">Projects</a>
+      <a class="{% if page == 'leave' %}active{% endif %}" href="/leave">Leave</a>
+      <a class="{% if page == 'employees' %}active{% endif %}" href="/ui/employees">Employees</a>
+      <a class="{% if page == 'ai_assistant' %}active{% endif %}" href="/ai-assistant">AI Assistant</a>
+    </nav>
+    <div class="account-actions">
+      <span class="user-chip" id="nav-user"></span>
+      <button class="button button-quiet button-small" type="button" data-logout>Log out</button>
+    </div>
+  </header>
+  {% endif %}
+  <main class="page-shell {% if page == 'login' %}login-shell{% endif %}">
+    {% block content %}{% endblock %}
+  </main>
+  <div class="toast-region" id="toast-region" aria-live="polite"></div>
+</body>
+</html>

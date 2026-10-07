@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">TIME AWAY</p><h1>Leave requests</h1><p class="muted">Review your requests or plan upcoming time off.</p></div></section>
+<div class="notice" id="leave-notice" hidden></div>
+<section class="leave-layout">
+  <article class="card content-card leave-form-card">
+    <div class="section-heading"><div><p class="eyebrow">NEW REQUEST</p><h2>Request leave</h2></div></div>
+    <form id="leave-form" class="stack-form">
+      <div class="form-row">
+        <div><label for="start-date">Start date</label><input id="start-date" name="start_date" type="date" required></div>
+        <div><label for="end-date">End date</label><input id="end-date" name="end_date" type="date" required></div>
+      </div>
+      <label for="leave-type">Leave type</label>
+      <select id="leave-type" name="leave_type"><option value="annual">Annual</option><option value="sick">Sick</option><option value="personal">Personal</option></select>
+      <label for="leave-reason">Reason <span class="optional-label">(optional)</span></label>
+      <textarea id="leave-reason" name="reason" rows="3" maxlength="500" placeholder="Add a short note"></textarea>
+      <p class="form-message error-message" id="leave-error" role="alert" hidden></p>
+      <button class="button button-primary" type="submit" id="leave-submit">Submit request</button>
+    </form>
+  </article>
+  <article class="card content-card leave-history-card">
+    <div class="section-heading"><div><p class="eyebrow">HISTORY</p><h2>Your requests</h2></div></div>
+    <div id="leave-list" class="table-wrap"><div class="skeleton"></div></div>
+  </article>
+</section>
+{% endblock %}
+{% block scripts %}<script defer src="{{ url_for('static', path='/js/leave.js') }}"></script>{% endblock %}

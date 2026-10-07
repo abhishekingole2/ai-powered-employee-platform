@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">YOUR WORK</p><h1>Projects</h1><p class="muted">Projects assigned to your employee profile.</p></div></section>
+<div class="notice" id="projects-notice" hidden></div>
+<section id="project-list" class="project-grid"><div class="card loading-card"><span class="spinner"></span>Loading projects…</div></section>
+{% endblock %}
+{% block scripts %}<script defer src="{{ url_for('static', path='/js/dashboard.js') }}"></script>{% endblock %}

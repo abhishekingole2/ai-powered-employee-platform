@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="login-layout">
+  <div class="login-intro">
+    <a class="brand login-brand" href="/login"><span class="brand-mark">P</span><span>PeopleDesk</span></a>
+    <p class="eyebrow">EMPLOYEE PLATFORM</p>
+    <h1>Good work starts with a clear view.</h1>
+    <p class="muted intro-copy">Sign in to keep your projects, time off, and team information in one place.</p>
+    <div class="login-decoration" aria-hidden="true"><span>People</span><span>Projects</span><span>Progress</span></div>
+  </div>
+  <div class="login-card card">
+    <p class="eyebrow">WELCOME BACK</p>
+    <h2>Sign in to your account</h2>
+    <p class="muted">Use your employee platform credentials.</p>
+    <form id="login-form" class="stack-form">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" autocomplete="username" required minlength="3">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required>
+      <p class="form-message error-message" id="login-error" role="alert" hidden></p>
+      <button class="button button-primary button-full" type="submit" id="login-submit">Sign in</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script defer src="{{ url_for('static', path='/js/login.js') }}"></script>{% endblock %}

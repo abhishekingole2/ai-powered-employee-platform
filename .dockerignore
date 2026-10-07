@@ -1,0 +1,10 @@
+.git
+.venv
+.venv312
+__pycache__
+*.py[cod]
+.pytest_cache
+.env
+.env.*
+!.env.example
+postgres_data
